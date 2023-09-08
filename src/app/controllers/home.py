@@ -1,13 +1,9 @@
-from flask import Blueprint, redirect, url_for
+from flask import Blueprint, render_template
 
 home = Blueprint('main', __name__, url_prefix='')
 
 
 @home.get('/')
 def index():
-    return redirect(url_for('.test'))
-
-
-@home.get('/test')
-def test():
-    return 'test', 200
+    response = render_template('pages/home/index.html.j2'), 200
+    return response

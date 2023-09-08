@@ -1,0 +1,28 @@
+{% macro template(props) %}
+    <div id="text-box" class="p-4 bg-white rounded shadow-sm">
+        <h1 class="fw-semibold mb-3">{{ props.title }}</h1>
+        <p>
+            The Flask Definitive Architecture is a concise template repository that embodies Flask best 
+            practices, leveraging the MVC Flask framework for the backend and Bootstrap for frontend 
+            pages and components.
+        </p>
+        <hr class="my-3">
+        <p>
+            You can start coding by following the template structure. You have the option to add new pages 
+            using the layout located at <kbd>views/layouts/page.html.j2</kbd> and components through 
+            <kbd>views/layouts/components.html.j2</kbd>.
+        </p>
+    </div>
+{% endmacro %}
+
+{% macro style() %}
+    <style>
+        div#text-box {
+            & h1 { font-size: 25px; }
+
+            & p.text-secondary { font-size: var(--medium-size); }
+        }
+    </style>
+{% endmacro %}
+
+{% macro script() %}{% endmacro %}
