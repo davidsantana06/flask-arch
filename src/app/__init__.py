@@ -1,4 +1,4 @@
-from app.core.constants import SRC_FOLDER_PATH
+from app.core.constants import Constants
 
 from flask import Blueprint, Flask
 from importlib import import_module
@@ -21,7 +21,7 @@ def configure_extensions(app: Flask) -> None:
 
 
 def configure_controllers(app: Flask) -> None:
-    controllers_directory = path.join(SRC_FOLDER_PATH, 'app', 'controllers')
+    controllers_directory = path.join(Constants.SRC_FOLDER_PATH, 'app', 'controllers')
     module_files = [
         f for f in listdir(controllers_directory)
         if (f.endswith('.py')) and (not f.startswith('__'))
