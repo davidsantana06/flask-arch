@@ -7,6 +7,5 @@ SRC_FOLDER_PATH: str = path.abspath(
         '..', '..'
     )
 )
-APP_FOLDER_PATH: str = path.join(SRC_FOLDER_PATH, 'app')
 OUTPUT_FOLDER_PATH: str = path.join(SRC_FOLDER_PATH, 'output')
 UPLOADS_FOLDER_PATH: str = path.join(SRC_FOLDER_PATH, 'uploads')

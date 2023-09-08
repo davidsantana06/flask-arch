@@ -9,5 +9,5 @@ def index():
 
 
 @home.get('/test')
-def teste():
-    return 'test'
+def test():
+    return 'test', 200
