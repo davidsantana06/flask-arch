@@ -7,11 +7,11 @@ from flask import (
 from typing import Tuple
 from werkzeug.exceptions import HTTPException
 
-error = Blueprint('error', __name__, url_prefix='')
+error_controller = Blueprint('error', __name__, url_prefix='')
 error_service = ErrorService()
 
 
-@error.app_errorhandler(Exception)
+@error_controller.app_errorhandler(Exception)
 def handle_exception(e: Exception):
     e_code: int = 0
 
