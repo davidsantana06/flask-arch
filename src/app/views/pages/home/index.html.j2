@@ -30,12 +30,8 @@
 
 {% block style %}
     <style>
-        body { background-color: var(--bs-light) }
-
-        main {
-            min-height: 100vh;
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
+        body { 
+            background-color: var(--bs-light);
         }
 
         div#fda {
@@ -46,13 +42,6 @@
             & h1 { color: #459F77 }
 
             & p { color: #54696F }
-        }
-
-        @media screen and (max-width: 500px) {
-            main {
-                padding-top: 2.25rem;
-                padding-bottom: 2.25rem;
-            }
         }
     </style>
     {{ text_box.style() }}
