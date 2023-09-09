@@ -1,11 +1,9 @@
-from app.core.constants import Constants
-
 from flask import (
     Flask,
     render_template
 )
 from mvc_flask import FlaskMVC
-from typing import Any, Dict, Tuple
+from typing import Dict
 from werkzeug.exceptions import HTTPException
 
 
@@ -55,7 +53,7 @@ def configure_error_handler(app: Flask) -> None:
             }
         }
 
-        return data
+        return (render_template('pages/error.html.j2', data=data))
 
     app.register_error_handler(Exception, error_handler)
 

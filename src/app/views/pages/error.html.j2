@@ -1,0 +1,30 @@
+{% extends 'layouts/page.html.j2' %}
+
+
+{% block title %}{{ data['error'].code }}{% endblock %}
+
+{% block content %}
+    <main class="container d-flex align-items-center justify-content-center">
+        <div>
+            <span class="fw-semibold">{{ data['error'].code }}</span>
+            <hr class="my-1">
+            <span class="fw-light">{{ data['error'].description }}</span>
+        </div>
+    </main>
+{% endblock %}
+
+{% block style %}
+    <style>
+        body { 
+            background-color: var(--secondary-color); 
+        }
+
+        main { 
+            min-height: 100vh;
+
+            & span, hr { 
+                color: white; 
+            }
+        }
+    </style>
+{% endblock %}

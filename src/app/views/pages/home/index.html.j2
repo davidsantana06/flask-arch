@@ -3,7 +3,7 @@
 {% import 'pages/home/components/text-box.html.j2' as text_box %}
 
 
-{% block title %}Início{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
     <main class="container d-flex align-items-center">
@@ -30,7 +30,9 @@
 
 {% block style %}
     <style>
-        main { 
+        body { background-color: var(--bs-light) }
+
+        main {
             min-height: 100vh;
             padding-top: 1.5rem;
             padding-bottom: 1.5rem;
@@ -39,11 +41,11 @@
         div#fda {
             margin-bottom: 2.25rem;
 
-            & img { width: 80px; }
+            & img { width: 80px }
 
-            & h1 { color: #459F77; }
+            & h1 { color: #459F77 }
 
-            & p { color: #54696F; }
+            & p { color: #54696F }
         }
 
         @media screen and (max-width: 500px) {
