@@ -12,7 +12,7 @@ error_service = ErrorService()
 
 
 @error_controller.app_errorhandler(Exception)
-def handle_exception(e: Exception):
+def handle_exception(e: Exception) -> Tuple[str, int]:
     e_code: int = 0
 
     if (isinstance(e, HTTPException)):

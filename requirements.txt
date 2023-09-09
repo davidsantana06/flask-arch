@@ -1,1 +1,2 @@
 Flask==2.3.3
+mvc_flask==2.5.0
