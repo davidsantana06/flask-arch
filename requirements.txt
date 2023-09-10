@@ -1,2 +1,6 @@
-Flask==2.3.3
+flask==2.3.3
+flask_bcrypt==1.0.1
+flask_sqlalchemy==3.0.5
+mysql-connector-python==8.0.28
+flask_wtf==1.1.1
 mvc_flask==2.5.0
