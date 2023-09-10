@@ -1,6 +1,6 @@
-{% extends 'layouts/page.html.j2' %}
-{% import 'common/components/footer.html.j2' as footer %}
-{% import 'pages/home/components/text-box.html.j2' as text_box %}
+{% extends layout('page') %}
+{% import component('footer') as footer %}
+{% import component('home', 'text-box') as text_box %}
 
 
 {% block title %}Home{% endblock %}
@@ -37,11 +37,17 @@
         div#fda {
             margin-bottom: 2.25rem;
 
-            & img { width: 80px }
+            & img { 
+                width: 80px;
+            }
 
-            & h1 { color: #459F77 }
+            & h1 { 
+                color: #459F77; 
+            }
 
-            & p { color: #54696F }
+            & p { 
+                color: #54696F;
+            }
         }
     </style>
     {{ text_box.style() }}

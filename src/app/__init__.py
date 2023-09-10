@@ -3,7 +3,7 @@ from flask import (
     render_template
 )
 from mvc_flask import FlaskMVC
-from typing import Dict
+from typing import Dict, Tuple
 from werkzeug.exceptions import HTTPException
 
 
@@ -12,7 +12,38 @@ def configure_app(app: Flask) -> None:
 
 
 def configure_context_processors(app: Flask) -> None:
-    pass
+    def complete_template_filename(template_filename: str) -> str:
+        if (not template_filename.endswith(('.html', '.j2'))):
+            template_filename += '.html.j2'
+
+        return template_filename
+
+    def layout(layout_filename: str) -> str:
+        layout_path: str = 'layouts/{}'.format(
+            complete_template_filename(layout_filename)
+        )
+
+        return layout_path
+
+    def component(*args: Tuple[str] | Tuple[str, str]) -> str:
+        component_filename: str = ''
+        component_path: str = ''
+
+        if (len(args) == 1):
+            component_filename = args[0]
+            component_path = 'common'
+        elif (len(args) == 2):
+            component_filename = args[1]
+            component_path = 'pages/{}'.format(args[0])
+
+        component_path += '/components/{}'.format(
+            complete_template_filename(component_filename)
+        )
+
+        return component_path
+
+    app.jinja_env.globals.update(layout=layout)
+    app.jinja_env.globals.update(component=component)
 
 
 def configure_error_handler(app: Flask) -> None:
@@ -66,6 +97,7 @@ def configure_extensions(app: Flask) -> None:
 def create_app() -> Flask:
     app: Flask = Flask(__name__)
 
+    configure_context_processors(app)
     configure_error_handler(app)
     configure_extensions(app)
 
