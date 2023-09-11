@@ -1,9 +1,11 @@
 from flask import render_template
+from http import HTTPStatus
 from typing import Tuple
 
 
 class HomeController():
-    PAGE: str = 'pages/home/%s.html.j2'
-
     def index(self) -> Tuple[str, int]:
-        return (render_template(self.PAGE % 'index'), 200)
+        return (
+            render_template('pages/home/index.html.j2'), 
+            HTTPStatus.OK
+        )
