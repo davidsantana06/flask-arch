@@ -2,7 +2,7 @@ from flask import Flask
 
 
 def complete_template_filename(template_filename: str) -> str:
-    if (not template_filename.endswith(('.html', '.j2'))):
+    if (not template_filename.endswith(('.html.j2'))):
         template_filename += '.html.j2'
 
     return template_filename
@@ -34,6 +34,6 @@ def component(*args) -> str:
     return component_path
 
 
-def configure_context_processors(app: Flask) -> None:
+def configure_jinja_env(app: Flask) -> None:
     app.jinja_env.globals.update(layout=layout)
     app.jinja_env.globals.update(component=component)
