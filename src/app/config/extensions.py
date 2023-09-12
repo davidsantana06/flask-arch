@@ -1,6 +1,5 @@
-from app.extensions import mvc, database, bcrypt, csrf
-
 from flask import Flask
+from app.extensions import mvc, database, bcrypt, csrf
 
 
 def configure_extensions(app: Flask) -> None:

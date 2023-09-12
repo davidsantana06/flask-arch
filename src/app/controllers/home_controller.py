@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Tuple
-
 from app.core.utils import render_page
 
 
