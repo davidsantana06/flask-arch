@@ -1,45 +1,23 @@
-from flask import (
-    Flask,
-    render_template
-)
+from flask import Flask
 from typing import Dict, Tuple
 from werkzeug.exceptions import HTTPException
+from app.core.utils import render_page
 
 
 ERROR_MESSAGE: Dict[int, str] = {
-    400: 'Requisição inválida.',
-    401: 'Acesso não autorizado.',
-    402: 'Pagamento necessário.',
-    403: 'Acesso proibido.',
-    404: 'Página não encontrada.',
-    405: 'Método HTTP não permitido.',
-    406: 'Não é possível satisfazer o cabeçalho Accept.',
-    407: 'Autenticação de proxy necessária.',
-    408: 'Tempo limite da solicitação esgotado.',
-    409: 'Conflito na solicitação.',
-    410: 'Recurso não disponível.',
-    411: 'Comprimento necessário no cabeçalho Content-Length.',
-    412: 'Falha na pré-condição.',
-    413: 'Entidade muito grande.',
-    414: 'URI da solicitação muito longa.',
-    415: 'Tipo de mídia não suportado.',
-    416: 'Intervalo solicitado não satisfatório.',
-    417: 'Expectativa falhou.',
-    418: 'Eu sou um bule de chá (teapot).',
-    429: 'Limite de taxa excedido.',
-    500: 'Erro interno do servidor.',
-    501: 'Funcionalidade não implementada.',
-    502: 'Bad Gateway.',
-    503: 'Serviço indisponível.'
+    400: 'Invalid request.',
+    401: 'Unauthorized access.',
+    403: 'Forbidden acess.',
+    404: 'Page not found.',
+    405: 'HTTP method not allowed.',
+    500: 'Internal server error.'
 }
+GENERIC_MESSAGE: str = 'An unexpected error has occurred.'
 
 
 def error_handler(e: Exception) -> Tuple[str, int]:
     error_code: int = e.code if (isinstance(e, HTTPException)) else 500
-    description: str = ERROR_MESSAGE.get(
-        error_code,
-        'Ocorreu um erro inesperado.'
-    )
+    description: str = ERROR_MESSAGE.get(error_code, GENERIC_MESSAGE)
     data: dict[str, object] = {
         'error': {
             'code': error_code,
@@ -47,7 +25,7 @@ def error_handler(e: Exception) -> Tuple[str, int]:
         }
     }
 
-    return (render_template('pages/error.html.j2', data=data), error_code)
+    return (render_page('error_handler', data), error_code)
 
 
 def configure_error_handler(app: Flask) -> None:
