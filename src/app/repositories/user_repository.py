@@ -11,5 +11,5 @@ class UserRepository(Repository):
 
     def find_all_by_name(self, name: str) -> List[User]:
         return self._find_all_by(
-            User, (User.username == name)
+            User, (User.name == name)
         )
