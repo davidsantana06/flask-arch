@@ -1,6 +1,6 @@
 from http import HTTPStatus
 from typing import Tuple
-from app.core.utils import render_page
+from app.common.utils import render_page
 
 
 class HomeController():

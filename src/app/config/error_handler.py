@@ -1,7 +1,7 @@
 from flask import Flask
 from typing import Dict, Tuple
 from werkzeug.exceptions import HTTPException
-from app.core.utils import render_page
+from app.common.utils import render_page
 
 
 ERROR_MESSAGE: Dict[int, str] = {
