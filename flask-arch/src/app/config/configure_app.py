@@ -1,15 +1,17 @@
 from datetime import timedelta
 from flask import Flask
 from typing import Dict
+from app.constants import RESOURCES_FOLDER_PATH
 
 
-APP_CONFIG_PARAMS: Dict[str, object] = {
+__STATIC_FOLDER: str = f'{RESOURCES_FOLDER_PATH}/static'
+__TEMPLATE_FOLDER: str = f'{RESOURCES_FOLDER_PATH}/templates'
+__CONFIG: Dict[str, object] = {
     'SECRET_KEY': '' + \
         '| ------------------------------- |\n' + \
         '|  Flask Definitive Architecture  |\n' + \
         '|    github.com/davidsantana06    |\n' + \
         '| ------------------------------- |',
-
     'SQLALCHEMY_DATABASE_URI': '{dbms}://{username}:{password}@{server}/{database}'.format(
         dbms='mysql+mysqlconnector',
         username='',
@@ -17,13 +19,12 @@ APP_CONFIG_PARAMS: Dict[str, object] = {
         server='',
         database=''
     ),
-
     'SQLALCHEMY_TRACK_MODIFICATIONS': False,
-
-    'PERMANENT_SESSION_LIFETIME': timedelta(days=7)
+    'PERMANENT_SESSION_LIFETIME': timedelta(days=1)
 }
 
 
 def configure_app(app: Flask) -> None:
-    for name, param in APP_CONFIG_PARAMS.items():
-        app.config[name] = param
+    app.static_folder = __STATIC_FOLDER
+    app.template_folder = __TEMPLATE_FOLDER
+    app.config.from_object(__CONFIG)

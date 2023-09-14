@@ -1,5 +1,5 @@
 from typing import List
-from app.core.base.repository import Repository
+from app.repositories.base import Repository
 from app.models.user import User
 
 
