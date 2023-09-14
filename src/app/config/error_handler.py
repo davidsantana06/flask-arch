@@ -28,5 +28,5 @@ def error_handler(e: Exception) -> Tuple[str, int]:
     return (render_page('error_handler', data), error_code)
 
 
-def configure_error_handler(app: Flask) -> None:
+def x_error_handler(app: Flask) -> None:
     app.register_error_handler(Exception, error_handler)

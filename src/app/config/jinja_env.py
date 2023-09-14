@@ -22,12 +22,11 @@ def component(*args) -> str:
 
     if (len(args) == 1):
         component_filename = args[0]
-        component_path = 'common'
     elif (len(args) == 2):
         component_filename = args[1]
-        component_path = 'pages/{}'.format(args[0])
+        component_path = 'pages/{}/'.format(args[0])
 
-    component_path += '/components/{}'.format(
+    component_path += 'components/{}'.format(
         complete_template_filename(component_filename)
     )
 
