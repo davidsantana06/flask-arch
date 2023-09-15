@@ -1,15 +1,16 @@
 from sqlalchemy import Column, DateTime, Integer, String
+from sqlalchemy.sql import func
 from app.extensions import database
 
 
 class User(database.Model):
-    __tablename__ = 'User'
+    __tablename__: str = 'User'
 
     id: Column = Column(Integer, primary_key=True)
     name: Column = Column(String(50), nullable=False)
     email: Column = Column(String(50), unique=True, nullable=False)
     username: Column = Column(String(30), unique=True, nullable=False)
     password: Column = Column(String(60), nullable=False)
-    created_at: Column = Column(DateTime, nullable=False)
-    updated_at: Column = Column(DateTime, nullable=False)
-    status: Column = Column(Integer, nullable=False)
+    created_at: Column = Column(DateTime, nullable=False, default=func.now())
+    updated_at: Column = Column(DateTime, nullable=False, default=func.now())
+    status: Column = Column(Integer, nullable=False, default=1)

@@ -27,4 +27,7 @@ __CONFIG: Dict[str, object] = {
 def configure_app(app: Flask) -> None:
     app.static_folder = __STATIC_FOLDER
     app.template_folder = __TEMPLATE_FOLDER
-    app.config.from_object(__CONFIG)
+    
+    for name, param in __CONFIG.items():
+        app.config[name] = param
+        

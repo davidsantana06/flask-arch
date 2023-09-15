@@ -12,7 +12,7 @@ __home_service: HomeService = HomeService()
 @home_blueprint.get('/')
 def index() -> Tuple[str, HTTPStatus]:
     # data: Dict[str, object] = {
-    #     'user': self.__home_service.find_user_by_username(
+    #     'user': __home_service.find_user_by_username(
     #         'davidsantana06'
     #     )
     # }

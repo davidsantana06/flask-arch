@@ -1,9 +1,9 @@
 from typing import List
-from app.repositories.base import Repository
+from app.repositories.base import BaseRepository
 from app.models.user import User
 
 
-class UserRepository(Repository):
+class UserRepository(BaseRepository):
     def find_by_username(self, username: str) -> User:
         return self._find_by(
             User, [User.username == username]
