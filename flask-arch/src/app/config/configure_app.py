@@ -4,9 +4,9 @@ from typing import Dict
 from app.constants import RESOURCES_FOLDER_PATH
 
 
-__STATIC_FOLDER: str = f'{RESOURCES_FOLDER_PATH}/static'
-__TEMPLATE_FOLDER: str = f'{RESOURCES_FOLDER_PATH}/templates'
-__CONFIG: Dict[str, object] = {
+STATIC_FOLDER: str = f'{RESOURCES_FOLDER_PATH}/static'
+TEMPLATE_FOLDER: str = f'{RESOURCES_FOLDER_PATH}/templates'
+CONFIG: Dict[str, object] = {
     'SECRET_KEY': '' + \
         '| ------------------------------- |\n' + \
         '|  Flask Definitive Architecture  |\n' + \
@@ -25,9 +25,9 @@ __CONFIG: Dict[str, object] = {
 
 
 def configure_app(app: Flask) -> None:
-    app.static_folder = __STATIC_FOLDER
-    app.template_folder = __TEMPLATE_FOLDER
+    app.static_folder = STATIC_FOLDER
+    app.template_folder = TEMPLATE_FOLDER
     
-    for name, param in __CONFIG.items():
+    for name, param in CONFIG.items():
         app.config[name] = param
         
