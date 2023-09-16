@@ -1,9 +1,14 @@
 from app.models.user import User
+from typing import List
 
 
-def find_user_by_username(self, username: str) -> User:
-    return self.__user_repository.find_by_username(username)
+def find_user_by_username(username: str) -> User:
+    return User.find_by_username(username)
 
 
-def find_users_by_name(self, name: str):
-    return self.__user_repository.find_all_by_name(name)
+def find_all_users_by_name(name: str) -> List[User]:
+    return User.find_all_by_name(name)
+
+
+def find_all_users() -> List[User]:
+    return User.find_all()
