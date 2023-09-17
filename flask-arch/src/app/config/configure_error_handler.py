@@ -2,6 +2,7 @@ from flask import Flask
 from http import HTTPStatus
 from typing import Dict, Tuple
 from werkzeug.exceptions import HTTPException
+
 from app.lib.utils import render_page
 
 

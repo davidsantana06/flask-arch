@@ -2,6 +2,7 @@ from flask import Flask, Blueprint
 from importlib import import_module
 from os import path, listdir
 from types import ModuleType
+
 from app.constants import APP_FOLDER_PATH
 
 

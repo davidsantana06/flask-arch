@@ -1,5 +1,5 @@
-from app.models import User
 from typing import List
+from app.models import User
 
 
 def find_user_by_username(username: str) -> User:

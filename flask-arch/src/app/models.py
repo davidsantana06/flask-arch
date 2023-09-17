@@ -1,8 +1,9 @@
 from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.sql import func
 from typing import List
+
 from app.extensions import database
-from app.lib.base import BaseModel
+from app.lib.base.models import BaseModel
 
 
 class User(BaseModel, database.Model):

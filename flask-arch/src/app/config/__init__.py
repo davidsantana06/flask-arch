@@ -7,6 +7,7 @@ from os import (
 )
 from types import FunctionType, ModuleType
 from typing import List
+
 from app.constants import APP_FOLDER_PATH
 
 
@@ -16,7 +17,6 @@ CONFIG_MODULE_PATH: str = 'app.config.{module_name}'
 
 def configure_all(app: Flask) -> None:
     configure_functions: List[FunctionType] = []
-
     modules: List[str] = [
         file_name[:-3] for file_name in listdir(CONFIG_DIRECTORY)
         if (file_name.endswith('.py')) and (not file_name.startswith('__'))

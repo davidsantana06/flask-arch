@@ -1,6 +1,7 @@
 from datetime import timedelta
 from flask import Flask
 from typing import Dict
+
 from app.constants import RESOURCES_FOLDER_PATH
 
 

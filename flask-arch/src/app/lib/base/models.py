@@ -5,6 +5,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import Query
 from typing import List
+
 from app.extensions import database
 
 
