@@ -1,4 +1,4 @@
-from app.models.user import User
+from app.models import User
 from typing import List
 
 
