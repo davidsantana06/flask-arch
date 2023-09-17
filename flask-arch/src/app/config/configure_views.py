@@ -7,12 +7,19 @@ from app.constants import APP_FOLDER_PATH
 
 
 MODULES_DIRECTORY: str = path.join(APP_FOLDER_PATH, 'modules')
+MODULE_DIRECTORY: str = MODULES_DIRECTORY + '\\{module_name}'
 VIEWS_MODULE_PATH: str = 'app.modules.{module_name}.views'
 
 
-def configure_blueprints(app: Flask) -> None:
+def configure_views(app: Flask) -> None:
     for module_name in listdir(MODULES_DIRECTORY):
-        try:
+        module_directory: str = MODULE_DIRECTORY.format(
+            module_name=module_name
+        )
+
+        print(listdir(module_directory))
+
+        if 'views.py' in listdir(module_directory):
             views: ModuleType = import_module(
                 VIEWS_MODULE_PATH.format(module_name=module_name)
             )
@@ -21,5 +28,3 @@ def configure_blueprints(app: Flask) -> None:
                 if isinstance(item, Blueprint):
                     app.register_blueprint(item)
                     break
-        except ModuleNotFoundError:
-            continue
