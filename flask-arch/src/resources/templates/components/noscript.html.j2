@@ -1,0 +1,23 @@
+{% macro template(props) %}
+    <noscript class="d-flex align-items-center justify-content-center px-2">
+        <div class="noscript-overlay bg-white rounded shadow">
+            <p>To access the page's features properly, <b>enable script execution</b> in your browser.</p>
+        </div>
+    </noscript>
+{% endmacro %}
+
+{% macro style() %}
+    <style>
+        noscript {
+            background-color: rgba(0, 0, 0, .8);
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+
+            & .noscript-overlay {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+{% endmacro %}
