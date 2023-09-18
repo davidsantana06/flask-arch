@@ -11,14 +11,14 @@
             <div id="fda" class="d-flex align-items-center justify-content-center">
                 <img class="me-3" src="{{ url_for('static', filename='images/fda.png') }}">
                 <div>
-                    <h1 class="fw-semibold">FDA</h1>
-                    <p>Flask Definitive Arch.</p>
+                    <h1 class="fw-semibold">Flask Arch</h1>
+                    <p>MODULAR APP</p>
                 </div>
             </div>
             <div class="mb-3">
                 {{ 
                     text_box.template({
-                        'title': 'Welcome to FDA!'
+                        'title': 'Welcome to Flask Arch!'
                     })
                 }}
             </div>
@@ -35,6 +35,15 @@
 
         div#fda {
             margin-bottom: 2.25rem;
+
+            & h1 {
+                font-size: larger;
+            }
+
+            & p {
+                font-size: small;
+                font-weight: 300;
+            }
 
             & img { 
                 width: 80px;
