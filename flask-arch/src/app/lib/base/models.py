@@ -37,7 +37,7 @@ class BaseModel(Model):
         return model
 
     @classmethod
-    def find_all_by(
+    def find_all(
         cls, filter_clauses: List[ColumnElement[bool]] = None, order_clauses: List[UnaryExpression] = None
     ) -> List[Model]:
         query: Query = cls.query
@@ -49,9 +49,4 @@ class BaseModel(Model):
             query = query.order_by(*order_clauses)
 
         models: List[Model] = query.all()
-        return models
-
-    @classmethod
-    def find_all(cls) -> List[Model]:
-        models: List[Model] = cls.query.all()
         return models

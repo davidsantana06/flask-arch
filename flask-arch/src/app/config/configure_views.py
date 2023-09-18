@@ -17,8 +17,6 @@ def configure_views(app: Flask) -> None:
             module_name=module_name
         )
 
-        print(listdir(module_directory))
-
         if 'views.py' in listdir(module_directory):
             views: ModuleType = import_module(
                 VIEWS_MODULE_PATH.format(module_name=module_name)

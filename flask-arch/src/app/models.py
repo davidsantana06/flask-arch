@@ -24,4 +24,4 @@ class User(BaseModel, database.Model):
 
     @classmethod
     def find_all_by_name(cls, name: str) -> List['User']:
-        return cls.find_all_by([User.name.icontains(name)])
+        return cls.find_all([User.name.icontains(name)])
