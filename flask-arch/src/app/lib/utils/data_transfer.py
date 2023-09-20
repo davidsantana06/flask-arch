@@ -18,7 +18,6 @@ def obj_to_form(obj: object, form: FlaskForm, reserverd_attrs: List[str] = []):
 
         if (hasattr(obj, name)) and (name not in reserverd_attrs):
             field.data = getattr(obj, name)
-            reserverd_attrs.remove(name)
 
 
 def form_to_obj(form: FlaskForm, obj: object, reserverd_attrs: List[str] = []):
@@ -27,4 +26,3 @@ def form_to_obj(form: FlaskForm, obj: object, reserverd_attrs: List[str] = []):
 
         if name not in reserverd_attrs:
             field.populate_obj(obj, name)
-            reserverd_attrs.remove(name)
