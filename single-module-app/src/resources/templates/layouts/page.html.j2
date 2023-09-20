@@ -1,0 +1,24 @@
+{% import component('noscript') as noscript %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title required %}{% endblock %} · Flask Arch</title>
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        {{ noscript.style() }}
+        {% block style %}{% endblock %}
+        <script src="https://kit.fontawesome.com/3f85880f24.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        {{ noscript.template() }}
+        {% block content required %}{% endblock %}
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+        {% block script %}{% endblock %}
+    </body>
+</html>

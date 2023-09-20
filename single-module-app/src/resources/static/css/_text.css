@@ -1,0 +1,7 @@
+h1, h2, h3, h4, h5, h6, p { margin-bottom: 0;}
+
+kbd {
+    background-color: var(--bs-secondary-bg-subtle);
+    color: var(--bs-dark);
+    padding: 2px 5px 3px 5px;
+}

@@ -1,0 +1,37 @@
+{% extends layout('page') %}
+
+
+{% block title %}{{ data['error'].code }}{% endblock %}
+
+{% block content %}
+    <main class="container d-flex align-items-center justify-content-center">
+        <div id="error" class="shadow">
+            <div class="bg-white px-3 py-1">
+                <span id="code" class="fw-semibold">_{{ data['error'].code }}</span>
+            </div>
+            <div class="bg-dark p-3">
+                <span id="description" class="fw-light">{{ data['error'].description }}</span>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block style %}
+    <style>
+        body { 
+            background-color: var(--secondary-color); 
+        }
+
+        div#error {
+            & span#code {
+                color: var(--secondary-color);
+                
+            }
+
+            & span#description {
+                color: white;
+                font-size: small;
+            }
+        }
+    </style>
+{% endblock %}
