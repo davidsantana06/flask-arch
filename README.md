@@ -42,7 +42,6 @@ enhancing the developer's experience.
 
 The code has been built based on Python 3.11, Bootstrap 5, and JavaScript. Flask and other 
 libraries, along with their respective versions, are listed in the `requirements.txt` file.
-
 <br /><br />
 
 ### Installation
@@ -53,7 +52,7 @@ terminal in the project's root folder and execute the following command:
 ```terminal
 pip3 install -r requirements.txt
 ```
-<br /><br /><br />
+<br /><br />
 
 
 
