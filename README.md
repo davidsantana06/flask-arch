@@ -56,7 +56,7 @@ pip3 install -r requirements.txt
 
 
 
-## :balance_scale: Licença
+## :balance_scale: License
 This project adopts the **MIT License**, which allows you to use and make modifications to 
 the code as you wish. The only thing I ask is that proper credit is given, acknowledging the 
 effort and time I invested in building it.
