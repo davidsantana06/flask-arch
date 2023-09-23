@@ -1,10 +1,9 @@
 # Flask Arch
 
-Flask Arch is a template repository designed for creating Flask applications oriented towards 
-services, with code that is thoughtfully organized and divided according to the purposes of each 
-component. This template provides the flexibility to choose between two project versions: 
-`multi-module-app`, ideal for complex applications segmented by modules, and `single-module-app`, 
-intended for smaller projects with a single main module.
+Flask Arch is a template for developing small to medium-sized Flask applications. This project has
+been meticulously crafted with attention to the smallest details, featuring a modular structure,
+well-organized configuration and loading, as well as native integration with some of the key
+technologies commonly used by Flask developers.
 <br /><br /><br />
 
 
@@ -29,9 +28,9 @@ errors to present concise messages to users, such as the 404 or 500 error.
 `templates/pages` for the main pages and `templates/components` for reusable parts, allowing 
 efficient management of frontend sections.
 
-6. **Utility Functions**: Utility functions have been included to assist in the Jinja 
-environment, such as date formatting, data transfer, and other operations directly, 
-enhancing the developer's experience.
+6. **Utility Functions**: Utility functions have been included to assist in various sections of
+code, including Jinja, such as date formatting, data transfer, and other operations that
+enhance the developer's experience.
 <br /><br /><br />
 
 
