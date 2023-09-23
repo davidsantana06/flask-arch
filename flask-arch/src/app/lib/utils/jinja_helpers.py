@@ -1,11 +1,11 @@
 from flask import render_template
-from typing import Dict
+from typing import Dict, Tuple, Union
 
 
-TEMPLATE_EXTENSION: str = '.html.j2'
-PAGE_PATH: str = 'pages/{name}/'
-COMPONENT_PATH: str = 'components/{component_name}'
-LAYOUT_PATH: str = 'layouts/{layout_name}'
+TEMPLATE_EXTENSION = '.html.j2'
+PAGE_PATH = 'pages/{name}/'
+COMPONENT_PATH = 'components/{component_name}'
+LAYOUT_PATH = 'layouts/{layout_name}'
 
 
 def complete_template_name(template_name: str) -> str:
@@ -15,15 +15,15 @@ def complete_template_name(template_name: str) -> str:
     return template_name
 
 
-def component(*component_data):
-    component_name: str = ''
-    component_path: str = ''
+def component(*component_data: Union[str, Tuple[str, str]]) -> str:
+    component_name = ''
+    component_path = ''
 
     if len(component_data) == 1:
         component_name = component_data[0]
     elif len(component_data) == 2:
         component_name = component_data[1]
-        module_name: str = component_data[0]
+        module_name = component_data[0]
         component_path = PAGE_PATH.format(
             name=module_name
         )
@@ -42,7 +42,7 @@ def layout(layout_name: str) -> str:
 
 
 def render_page(page_name: str, data: Dict[str, object] = None) -> str:
-    page_path: str = PAGE_PATH.format(
+    page_path = PAGE_PATH.format(
         name=complete_template_name(page_name)
     )
 

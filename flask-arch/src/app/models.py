@@ -3,7 +3,7 @@ from sqlalchemy import (
     Column, ColumnElement, DateTime, Integer, String, UnaryExpression,
     and_
 )
-from sqlalchemy.orm import Query
+from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy.sql import func
 from typing import List
 
@@ -11,6 +11,22 @@ from .extensions import database
 
 
 class CRUDMixin(Model):
+    @declared_attr
+    def __tablename__(cls):
+        return cls.__name__
+
+    @declared_attr
+    def created_at(cls):
+        return Column(DateTime, nullable=False, default=func.now())
+
+    @declared_attr
+    def updated_at(cls):
+        return Column(DateTime, nullable=False, default=func.now())
+
+    @declared_attr
+    def status(cls):
+        return Column(Integer, nullable=False, default=1)
+
     @staticmethod
     def add(model: Model) -> None:
         try:
@@ -30,18 +46,16 @@ class CRUDMixin(Model):
             raise e
 
     @classmethod
-    def find_by(cls, filters: List[ColumnElement[bool]]) -> Model:
-        model: Model = cls.query.filter(
+    def find_first(cls, filters: List[ColumnElement[bool]]) -> Model:
+        return cls.query.filter(
             and_(*filters)
         ).first()
-
-        return model
 
     @classmethod
     def find_all(
         cls, filter_clauses: List[ColumnElement[bool]] = None, order_clauses: List[UnaryExpression] = None
     ) -> List[Model]:
-        query: Query = cls.query
+        query = cls.query
 
         if filter_clauses:
             query = query.filter(and_(*filter_clauses))
@@ -49,25 +63,19 @@ class CRUDMixin(Model):
         if order_clauses:
             query = query.order_by(*order_clauses)
 
-        models: List[Model] = query.all()
-        return models
+        return query.all()
 
 
 class User(database.Model, CRUDMixin):
-    __tablename__: str = 'User'
-
-    id: Column = Column(Integer, primary_key=True)
-    name: Column = Column(String(50), nullable=False)
-    email: Column = Column(String(50), unique=True, nullable=False)
-    username: Column = Column(String(30), unique=True, nullable=False)
-    password: Column = Column(String(60), nullable=False)
-    created_at: Column = Column(DateTime, nullable=False, default=func.now())
-    updated_at: Column = Column(DateTime, nullable=False, default=func.now())
-    status: Column = Column(Integer, nullable=False, default=1)
+    id = Column(Integer, primary_key=True)
+    name = Column(String(50), nullable=False)
+    email = Column(String(50), unique=True, nullable=False)
+    username = Column(String(30), unique=True, nullable=False)
+    password = Column(String(60), nullable=False)
 
     @classmethod
     def find_by_username(cls, username: str) -> 'User':
-        return cls.find_by([User.username == username])
+        return cls.find_first([User.username == username])
 
     @classmethod
     def find_all_by_name(cls, name: str) -> List['User']:

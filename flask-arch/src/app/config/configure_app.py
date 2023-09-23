@@ -1,13 +1,12 @@
 from datetime import timedelta
 from flask import Flask
-from typing import Dict
 
 from app.constants import RESOURCES_FOLDER_PATH
 
 
-STATIC_FOLDER: str = f'{RESOURCES_FOLDER_PATH}/static'
-TEMPLATE_FOLDER: str = f'{RESOURCES_FOLDER_PATH}/templates'
-CONFIG: Dict[str, object] = {
+STATIC_FOLDER = f'{RESOURCES_FOLDER_PATH}/static'
+TEMPLATE_FOLDER = f'{RESOURCES_FOLDER_PATH}/templates'
+CONFIG = {
     'SECRET_KEY': '' + \
         '| ------------------------------- |\n' + \
         '|  Flask Definitive Architecture  |\n' + \

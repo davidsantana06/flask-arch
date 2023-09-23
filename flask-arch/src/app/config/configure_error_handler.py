@@ -1,12 +1,11 @@
 from flask import Flask
 from http import HTTPStatus
-from typing import Dict, Tuple
 from werkzeug.exceptions import HTTPException
 
 from app.lib.utils import render_page
 
 
-ERROR_MESSAGE: Dict[int, str] = {
+ERROR_MESSAGE = {
     400: 'Invalid request.',
     401: 'Unauthorized access.',
     403: 'Forbidden acess.',
@@ -14,14 +13,14 @@ ERROR_MESSAGE: Dict[int, str] = {
     405: 'HTTP method not allowed.',
     500: 'Internal server error.'
 }
-GENERIC_MESSAGE: str = 'An unexpected error has occurred.'
+GENERIC_MESSAGE = 'An unexpected error has occurred.'
 
 
-def error_handler(e: Exception) -> Tuple[str, HTTPStatus]:
-    error_code: int = e.code if (isinstance(e, HTTPException)) else 500
-    description: str = ERROR_MESSAGE.get(error_code, GENERIC_MESSAGE)
-    http_status: HTTPStatus = HTTPStatus(error_code)
-    data: Dict[str, object] = {
+def error_handler(e: Exception):
+    error_code = e.code if (isinstance(e, HTTPException)) else 500
+    description = ERROR_MESSAGE.get(error_code, GENERIC_MESSAGE)
+    http_status = HTTPStatus(error_code)
+    data = {
         'error': {
             'code': error_code,
             'description': description

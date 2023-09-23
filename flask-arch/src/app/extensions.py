@@ -3,6 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CSRFProtect
 
 
-database: SQLAlchemy = SQLAlchemy()
-bcrypt: Bcrypt = Bcrypt()
-csrf: CSRFProtect = CSRFProtect()
+database = SQLAlchemy()
+bcrypt = Bcrypt()
+csrf = CSRFProtect()
