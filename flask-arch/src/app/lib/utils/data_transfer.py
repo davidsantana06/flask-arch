@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from typing import Dict, List
 
 
-def dict_to_form(data: Dict[str, object], form: FlaskForm):
+def dict_to_form(data: Dict[str, object], form: FlaskForm) -> None:
     for field in form:
         name = field.name
 
@@ -12,7 +12,7 @@ def dict_to_form(data: Dict[str, object], form: FlaskForm):
             data.pop(name)
 
 
-def obj_to_form(obj: object, form: FlaskForm, reserverd_attrs: List[str] = []):
+def obj_to_form(obj: object, form: FlaskForm, reserverd_attrs: List[str] = []) -> None:
     for field in form:
         name = field.name
 
@@ -20,7 +20,7 @@ def obj_to_form(obj: object, form: FlaskForm, reserverd_attrs: List[str] = []):
             field.data = getattr(obj, name)
 
 
-def form_to_obj(form: FlaskForm, obj: object, reserverd_attrs: List[str] = []):
+def form_to_obj(form: FlaskForm, obj: object, reserverd_attrs: List[str] = []) -> None:
     for field in form:
         name = field.name
 

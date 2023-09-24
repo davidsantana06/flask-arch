@@ -9,7 +9,7 @@ MONTH = [
 ]
 
 
-def format_datetime(dt: datetime, reference_date: date):
+def format_datetime(dt: datetime, reference_date: date) -> str:
     formatted_dt: str = ''
 
     if dt.date() == reference_date:
