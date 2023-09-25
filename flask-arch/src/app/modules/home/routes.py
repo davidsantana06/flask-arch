@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask_login import login_required
 from http import HTTPStatus
 from typing import Tuple
 
@@ -12,6 +13,7 @@ home = Blueprint('home', __name__, url_prefix='')
 
 
 @home.get('/')
+@login_required
 def index() -> Tuple[str, HTTPStatus]:
     # data = {
     #     'users': find_all_users()

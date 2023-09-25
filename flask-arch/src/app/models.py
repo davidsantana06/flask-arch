@@ -1,3 +1,4 @@
+from flask_login import UserMixin
 from flask_sqlalchemy.model import Model
 from sqlalchemy import (
     Column, ColumnElement, DateTime, Integer, String, UnaryExpression,
@@ -66,12 +67,16 @@ class CRUDMixin(Model):
         return query.all()
 
 
-class User(database.Model, CRUDMixin):
+class User(database.Model, CRUDMixin, UserMixin):
     id = Column(Integer, primary_key=True)
     name = Column(String(50), nullable=False)
     email = Column(String(50), unique=True, nullable=False)
     username = Column(String(30), unique=True, nullable=False)
     password = Column(String(60), nullable=False)
+
+    @classmethod
+    def find_by_id(cls, id: int) -> 'User':
+        return cls.find_first([User.id == id])
 
     @classmethod
     def find_by_username(cls, username: str) -> 'User':
