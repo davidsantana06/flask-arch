@@ -24,10 +24,11 @@ CONFIG = {
 }
 
 
-def configure_app(app: Flask) -> None:
+def configure_app_env(app: Flask) -> None:
     app.static_folder = STATIC_FOLDER
     app.template_folder = TEMPLATE_FOLDER
     
     for name, param in CONFIG.items():
         app.config[name] = param
+
         

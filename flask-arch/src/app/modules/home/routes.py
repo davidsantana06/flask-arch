@@ -8,7 +8,7 @@ from .forms import LoginForm
 from .services import find_all_users
 
 
-home: Blueprint = Blueprint('home', __name__, url_prefix='')
+home = Blueprint('home', __name__, url_prefix='')
 
 
 @home.get('/')

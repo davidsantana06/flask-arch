@@ -10,12 +10,12 @@ MONTH = [
 
 
 def format_datetime(dt: datetime, reference_date: date) -> str:
-    formatted_dt: str = ''
+    formatted_dt = ''
 
     if dt.date() == reference_date:
         formatted_dt = dt.strftime(TIME_PATTERN)
     else:
-        month_idx: int = dt.month - 1
+        month_idx = dt.month - 1
         formatted_dt = DATE_PATTERN.format(
             month=MONTH[month_idx], day=dt.day, year=dt.year
         )
