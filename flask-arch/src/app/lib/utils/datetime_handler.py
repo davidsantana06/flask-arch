@@ -9,7 +9,11 @@ MONTH = [
 ]
 
 
-def format_datetime(dt: datetime, reference_date: date) -> str:
+def today_date() -> datetime:
+    return datetime.now().date()
+
+
+def format_dt(dt: datetime, reference_date: date) -> str:
     formatted_dt = ''
 
     if dt.date() == reference_date:
