@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import redirect as redirect, render_template, url_for
 from typing import Dict, Tuple, Union
 
 
@@ -39,6 +39,10 @@ def layout(layout_name: str) -> str:
     return LAYOUT_PATH.format(
         layout_name=complete_template_name(layout_name)
     )
+
+
+def redirect_to(endpoint: str) -> str:
+    return redirect(url_for(endpoint))
 
 
 def render_page(page_name: str, data: Dict[str, object] = None) -> str:
