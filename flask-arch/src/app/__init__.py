@@ -1,7 +1,7 @@
 from flask import Flask
 from .config import (
     configure_app_env, configure_error_handler, configure_extensions, 
-    configure_jinja_env, configure_routes
+    configure_jinja_env, configure_modules
 )
 
 
@@ -12,6 +12,6 @@ def create_app() -> Flask:
     configure_error_handler(app)
     configure_extensions(app)
     configure_jinja_env(app)
-    configure_routes(app)
+    configure_modules(app)
 
     return app
