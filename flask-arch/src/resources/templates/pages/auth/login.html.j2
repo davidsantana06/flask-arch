@@ -1,0 +1,85 @@
+{% extends layout('page') %}
+
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <main class="container d-flex">
+        <div class="d-flex align-items-center justify-content-center w-100">
+            <div id="form-content" class="d-flex align-items-center justify-content-center bg-white shadow rounded p-5">
+                <img class="me-5" src="{{ url_for('static', filename='images/fda.png') }}">
+                <form action="{{ url_for('home.index') }}" method="get">
+                    {{ form.csrf_token() }}
+                    <div class="mb-4">
+                        {{ form.username(
+                            class='form-control py-2 rounded-0 border-0 border-bottom shadow-none', 
+                            placeholder='Username'
+                        ) }}
+                    </div>
+                    <div class="mb-4">
+                        {{ form.password(
+                            class='form-control py-2 rounded-0 border-0 border-bottom shadow-none', 
+                            placeholder='Password'
+                        ) }}
+                        <div class="form-text">We'll never share your password with anyone else.</div>
+                    </div>
+                    {{ form.submit(class='btn text-white text-uppercase py-2 border-0 w-100') }}
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block style %}
+    <style>
+        #form-content {
+            & img {
+                width: 200px;
+            }
+
+            & form {
+                max-width: 400px;
+
+                & input:focus {
+                    border-color: var(--main-color) !important;
+                }
+
+                & .btn {
+                    background-color: var(--main-color);
+
+                    &:hover {
+                        background-color: var(--main-color-hover);
+                    }
+
+                    &:active {
+                        background-color: var(--main-color-active) !important;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 767px) {
+            #form-content img {
+                width: 170px;
+            }
+        }
+
+        @media (max-width: 570px) {
+            #form-content {
+                flex-wrap: wrap;
+
+                & img {
+                    margin-right: 0px !important;
+                    margin-bottom: 20px;
+                }
+
+                & form {
+                    min-width: 100%;
+                }
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

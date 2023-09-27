@@ -15,7 +15,7 @@
         <script src="https://kit.fontawesome.com/3f85880f24.js" crossorigin="anonymous"></script>
     </head>
 
-    <body>
+    <body class="bg-light">
         {{ noscript.template() }}
         {% block content required %}{% endblock %}
         <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>

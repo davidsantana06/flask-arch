@@ -1,16 +1,16 @@
 {% extends layout('page') %}
 
 
-{% block title %}{{ data['error'].code }}{% endblock %}
+{% block title %}{{ error.code }}{% endblock %}
 
 {% block content %}
     <main class="container d-flex align-items-center justify-content-center">
         <div id="error" class="shadow">
             <div class="bg-white px-3 py-1">
-                <span id="code" class="fw-semibold">_{{ data['error'].code }}</span>
+                <span id="code" class="fw-semibold">_{{ error.code }}</span>
             </div>
             <div class="bg-dark p-3">
-                <span id="description" class="fw-light">{{ data['error'].description }}</span>
+                <span id="description" class="fw-light">{{ error.description }}</span>
             </div>
         </div>
     </main>
