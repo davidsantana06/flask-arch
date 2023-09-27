@@ -16,11 +16,9 @@
                 </div>
             </div>
             <div class="mb-3">
-                {{ 
-                    text_box.template({
-                        'title': 'Welcome to Flask Arch!'
-                    })
-                }}
+                {{ text_box.template(
+                    title='Welcome to Flask Arch!'
+                ) }}
             </div>
             {{ footer.template() }}
         </div>
