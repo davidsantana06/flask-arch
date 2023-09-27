@@ -9,7 +9,7 @@ def create_app() -> Flask:
     app = Flask(__name__)
 
     configure_app_env(app)
-    # configure_error_handler(app)
+    configure_error_handler(app)
     configure_extensions(app)
     configure_jinja_env(app)
     configure_modules(app)

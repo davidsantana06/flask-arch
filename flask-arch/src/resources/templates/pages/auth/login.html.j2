@@ -6,7 +6,7 @@
 {% block content %}
     <main class="container d-flex">
         <div class="d-flex align-items-center justify-content-center w-100">
-            <div id="form-content" class="d-flex align-items-center justify-content-center bg-white shadow rounded p-5">
+            <div id="form-content" class="d-flex align-items-center justify-content-center bg-white shadow p-5">
                 <img class="me-5" src="{{ url_for('static', filename='images/fda.png') }}">
                 <form action="{{ url_for('home.index') }}" method="get">
                     {{ form.csrf_token() }}
@@ -69,6 +69,7 @@
                 flex-wrap: wrap;
 
                 & img {
+                    width: 120px;
                     margin-right: 0px !important;
                     margin-bottom: 20px;
                 }
