@@ -1,13 +1,12 @@
 from flask import Flask, Blueprint
 from importlib import import_module
-from os import path, listdir
+from os import listdir
 
-from app.constants import APP_FOLDER_PATH
+from app.constants import MODULES_DIRECTORY
 
 
-MODULES_DIRECTORY = path.join(APP_FOLDER_PATH, 'modules')
 MODULE_DIRECTORY = MODULES_DIRECTORY + '\\{module_name}'
-VIEWS_MODULE_PATH = 'app.modules.{module_name}.views'
+MODULE_PATH = 'app.modules.{module_name}'
 
 
 def configure_modules(app: Flask) -> None:
@@ -16,12 +15,12 @@ def configure_modules(app: Flask) -> None:
             module_name=module_name
         )
 
-        if 'views.py' in listdir(module_directory):
-            routes = import_module(
-                VIEWS_MODULE_PATH.format(module_name=module_name)
+        if '__init__.py' in listdir(module_directory):
+            views = import_module(
+                MODULE_PATH.format(module_name=module_name)
             )
 
-            for _, item in routes.__dict__.items():
+            for _, item in views.__dict__.items():
                 if isinstance(item, Blueprint):
                     app.register_blueprint(item)
                     break

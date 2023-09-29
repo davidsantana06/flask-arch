@@ -1,14 +1,14 @@
 from os import path
 
 
-ROOT_FOLDER_PATH = path.abspath(
+ROOT_DIRECTORY = path.abspath(
     path.join(
         path.dirname(__file__),
         '..', '..'
     )
 )
-OUTPUT_FOLDER_PATH = path.join(ROOT_FOLDER_PATH, 'output')
-UPLOADS_FOLDER_PATH = path.join(ROOT_FOLDER_PATH, 'uploads')
-SRC_FOLDER_PATH = path.join(ROOT_FOLDER_PATH, 'src')
-APP_FOLDER_PATH = path.join(SRC_FOLDER_PATH, 'app')
-RESOURCES_FOLDER_PATH = path.join(SRC_FOLDER_PATH, 'resources')
+OUTPUT_DIRECTORY = path.join(ROOT_DIRECTORY, 'output')
+UPLOADS_DIRECTORY = path.join(ROOT_DIRECTORY, 'uploads')
+SRC_DIRECTORY = path.join(ROOT_DIRECTORY, 'src')
+APP_DIRECTORY = path.join(SRC_DIRECTORY, 'app')
+MODULES_DIRECTORY = path.join(APP_DIRECTORY, 'modules')

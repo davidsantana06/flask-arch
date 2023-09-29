@@ -1,0 +1,47 @@
+#form-content {
+    & img {
+        width: 200px;
+    }
+
+    & form {
+        max-width: 400px;
+
+        & input:focus {
+            border-color: var(--main-color) !important;
+        }
+
+        & .btn {
+            background-color: var(--main-color);
+
+            &:hover {
+                background-color: var(--main-color-hover);
+            }
+
+            &:active {
+                background-color: var(--main-color-active) !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    #form-content img {
+        width: 170px;
+    }
+}
+
+@media (max-width: 570px) {
+    #form-content {
+        flex-wrap: wrap;
+
+        & img {
+            width: 120px;
+            margin-right: 0px !important;
+            margin-bottom: 20px;
+        }
+
+        & form {
+            min-width: 100%;
+        }
+    }
+}

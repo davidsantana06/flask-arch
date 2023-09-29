@@ -1,7 +1,11 @@
-{% extends layout('page') %}
+{% extends template('_base') %}
 
 
 {% block title %}{{ error.code }}{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('error.static', filename='css/error-handler.css') }}">
+{% endblock %}
 
 {% block content %}
     <main class="container d-flex align-items-center justify-content-center">
@@ -14,20 +18,4 @@
             </div>
         </div>
     </main>
-{% endblock %}
-
-{% block style %}
-    <style>
-        #error {
-            & span#code {
-                color: var(--secondary-color);
-                
-            }
-
-            & span#description {
-                color: white;
-                font-size: small;
-            }
-        }
-    </style>
 {% endblock %}

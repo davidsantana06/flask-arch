@@ -1,17 +1,18 @@
-from flask import Blueprint
+from datetime import timedelta
+from flask import Blueprint, request, redirect
+from flask_login import login_user, logout_user, current_user, login_required
 from http import HTTPStatus
 
-from app.lib.utils import render_page
+from app.misc import render_template
+from app.models import User
 
+from . import auth
 from .forms import LoginForm
 
 
-auth = Blueprint('auth', __name__, url_prefix='')
-
-
-@auth.get('/login')
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
     data = {
         'form': LoginForm()
     }
-    return (render_page('auth/login', data), HTTPStatus.OK)
+    return (render_template('login', data), HTTPStatus.OK)

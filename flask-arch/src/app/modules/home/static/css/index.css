@@ -1,0 +1,24 @@
+#fda {
+    margin-bottom: 2.25rem;
+
+    & h1 {
+        font-size: larger;
+    }
+
+    & p {
+        font-size: small;
+        font-weight: 400;
+    }
+
+    & img {
+        width: 80px;
+    }
+
+    & h1 {
+        color: #459F77;
+    }
+
+    & p {
+        color: #54696F;
+    }
+}

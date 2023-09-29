@@ -1,0 +1,12 @@
+h1 {
+    font-size: 100px;
+}
+
+#error {
+    & #code { color: var(--secondary-color); }
+
+    & #description {
+        color: white;
+        font-size: small;
+    }
+}

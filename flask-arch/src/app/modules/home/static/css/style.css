@@ -1,0 +1,9 @@
+#text-box {
+    & h1 {
+        font-size: 25px;
+    }
+
+    & p.text-secondary {
+        font-size: var(--medium-size);
+    }
+}
