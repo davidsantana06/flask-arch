@@ -1,0 +1,14 @@
+main { min-height: 100vh; }
+
+#message-input:focus{ border-color: var(--secondary-color) }
+
+.btn {
+    background-color: var(--main-color);
+    font-size: small;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &:hover { background-color: var(--main-color-hover); }
+
+    &:active { background-color: var(--main-color-active) !important; }
+}

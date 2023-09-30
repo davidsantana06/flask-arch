@@ -16,3 +16,8 @@ def index():
 @login_required
 def login_test():
     return (render_template('index'), HTTPStatus.OK)
+
+
+@home.get('/socket')
+def socket():
+    return (render_template('socket'), HTTPStatus.OK)

@@ -1,5 +1,4 @@
 {% extends template('_base') %}
-{% from template('_macros') import footer %}
 {% from template('__macros') import text_box %}
 
 
@@ -13,17 +12,14 @@
 {% block content %}
     <main class="container d-flex align-items-center py-min">
         <div class="w-100">
-            <div id="fda" class="d-flex align-items-center justify-content-center">
+            <div id="fda" class="d-flex align-items-center justify-content-center mb-3">
                 <img class="me-3" src="{{ url_for('static', filename='images/fda.png') }}">
                 <div>
                     <h1 class="fw-semibold">Flask Arch</h1>
                     <p>Modular Architecture</p>
                 </div>
             </div>
-            <div class="mb-3">
-                {{ text_box(title='Welcome to Flask Arch!') }}
-            </div>
-            {{ footer() }}
+            {{ text_box(title='Welcome to Flask Arch!') }}
         </div>
     </main>
 {% endblock %}

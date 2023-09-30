@@ -1,0 +1,44 @@
+{% extends template('_base') %}
+
+
+{% block title %}Socket IO{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('.static', filename='css/socket.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main class="container d-flex align-items-center justify-content-center py-min">
+        <div>
+            <div class="d-flex align-items-center">
+                <input id="message-input" class="form-control border-0 shadow-sm me-1" type="text">
+                <button class="btn border-0 rounded-0 text-white py-2" onclick="sendMessage()">Send</button>
+            </div>
+            <ul id="messages" class="list-group"></ul>
+        </div>
+    </main>
+{% endblock %}
+
+{% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script>
+        let socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        socket.on('message', function(data) {
+            let ul = document.getElementById('messages');
+            if (data != '') {
+                let li = document.createElement('li');
+                li.classList.add('list-group-item', 'border-0', 'rounded-0', 'shadow-sm', 'mt-1');
+                li.appendChild(document.createTextNode(data));
+                ul.appendChild(li);
+            }
+        });
+
+        function sendMessage() {
+            let messageInput = document.getElementById('message-input');
+            let message = messageInput.value;
+            socket.emit('message', message);
+            messageInput.value = '';
+        }
+    </script>
+{% endblock %}

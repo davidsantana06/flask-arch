@@ -16,24 +16,6 @@ noscript {
     & .noscript-overlay { padding: 15px 20px; }
 }
 
-footer .btn {
-    background-color: var(--secondary-color);
-    color: white;
-    padding: .4rem .8rem .4rem .8rem;
-
-    &:hover {
-        color: white;
-        background-color: var(--secondary-color-hover);
-    }
-
-    &:active {
-        color: white !important;
-        background-color: var(--secondary-color-active) !important;
-    }
-
-    & .material-symbols-outlined { font-size: medium; }
-}
-
 
 .pt-min { padding-top: 2.5rem; }
 

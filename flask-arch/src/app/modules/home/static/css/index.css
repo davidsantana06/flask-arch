@@ -1,8 +1,6 @@
 main { min-height: 100vh; }
 
 #fda {
-    margin-bottom: 2.25rem;
-
     & h1 { font-size: larger; }
 
     & p {
