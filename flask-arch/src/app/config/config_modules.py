@@ -4,6 +4,7 @@ from os import listdir
 
 from app.constants import MODULES_DIRECTORY
 
+
 MODULE_DIRECTORY = MODULES_DIRECTORY + '\\{module_name}'
 MODULE_PATH = 'app.modules.{module_name}'
 
