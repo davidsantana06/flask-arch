@@ -1,4 +1,4 @@
-h1 { font-size: 100px; }
+main { min-height: 100vh; }
 
 #error {
     & #code { color: var(--secondary-color); }

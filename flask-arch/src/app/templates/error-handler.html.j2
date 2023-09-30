@@ -4,11 +4,11 @@
 {% block title %}{{ error.code }}{% endblock %}
 
 {% block style %}
-    <link rel="stylesheet" href="{{ url_for('.static', filename='css/error-handler.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error-handler.css') }}">
 {% endblock %}
 
 {% block content %}
-    <main class="container d-flex align-items-center justify-content-center">
+    <main class="container d-flex align-items-center justify-content-center py-min">
         <div id="error" class="shadow-lg">
             <div class="bg-white px-3 py-1">
                 <span id="code" class="fw-semibold">_{{ error.code }}</span>

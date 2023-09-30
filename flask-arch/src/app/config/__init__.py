@@ -1,4 +1,5 @@
 from .config_app_env import configure_app_env
+from .config_error_handler import configure_error_handler
 from .config_extensions import configure_extensions
 from .config_jinja_env import configure_jinja_env
 from .config_modules import configure_modules
