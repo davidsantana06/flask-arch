@@ -25,3 +25,14 @@ noscript {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
 }
+
+@media (max-width: 450px) {
+    .ps-min { padding-left: 1.5rem !important; }
+
+    .pe-min { padding-right: 1.5rem !important; }
+
+    .px-min {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+}

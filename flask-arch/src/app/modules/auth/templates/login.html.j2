@@ -9,7 +9,7 @@
 {% block content %}
     <main class="container d-flex py-min">
         <div class="d-flex align-items-center justify-content-center w-100">
-            <div id="form-content" class="d-flex align-items-center justify-content-center bg-white shadow-sm p-5">
+            <div id="form-content" class="d-flex align-items-center justify-content-center bg-white shadow-sm p-5 px-min">
                 <img class="me-5" src="{{ url_for('static', filename='images/fda.png') }}">
                 <form action="{{ url_for('home.index') }}" method="get">
                     {{ form.csrf_token() }}
