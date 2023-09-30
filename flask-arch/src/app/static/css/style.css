@@ -3,15 +3,8 @@
 @import url('./_variables.css');
 
 
-* {
-    font-family: 'Roboto', sans-serif;
-}
+* { font-family: 'Roboto', sans-serif; }
 
-main {
-    min-height: 100vh;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-}
 
 noscript {
     background-color: rgba(0, 0, 0, .8);
@@ -20,9 +13,7 @@ noscript {
     height: 100%;
     z-index: 9999;
 
-    & .noscript-overlay {
-        padding: 15px 20px;
-    }
+    & .noscript-overlay { padding: 15px 20px; }
 }
 
 footer .btn {
@@ -40,14 +31,15 @@ footer .btn {
         background-color: var(--secondary-color-active) !important;
     }
 
-    & .material-symbols-outlined {
-        font-size: medium;
-    }
+    & .material-symbols-outlined { font-size: medium; }
 }
 
-@media screen and (max-width: 500px) {
-    main {
-        padding-top: 2.25rem;
-        padding-bottom: 2.25rem;
-    }
+
+.pt-min { padding-top: 2.5rem; }
+
+.pb-min { padding-bottom: 2.5rem; }
+
+.py-min { 
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
 }
