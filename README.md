@@ -10,27 +10,22 @@ technologies commonly used by Flask developers.
 
 ## :rocket: Features
 
-1. **Directory Structure**: The project follows a high-level organization with a well-defined 
-directory structure. The main directories include `src/app`, `src/resources`, in addition to 
-the optional directories `database`, `output`, and `uploads`.
+1. **Directory Structure**: The project follows a well-defined high-level organization with the 
+following directories: `src`, `database`, `output`, and `uploads`.
 
-2. **Configuration Module**: There is a specific module for application configuration where 
-configuration variables and other important settings are defined. This allows for easy 
-customization of the application's operational aspects.
+2. **Configuration Module**: There is a dedicated module for application configuration where 
+important settings and configuration variables are defined. This makes it easy to customize 
+various operational aspects of the application.
 
-3. **Routes and Views**: The assignment of routes and views for the application is done 
-dynamically, without the need to directly register any Blueprints with the application.
+3. **Error Handling**: The application includes an error handling module that handles common 
+errors and presents concise error messages to users, such as the 404 or 500 error.
 
-4. **Error Handling**: The application includes an error handling module that deals with common 
-errors to present concise messages to users, such as the 404 or 500 error.
+4. **Templates Organization**: HTML templates are organized in a clear structure with separate 
+pages and macros, which facilitates efficient management of frontend sections.
 
-5. **Template Organization**: HTML templates are organized clearly into two main directories: 
-`templates/pages` for the main pages and `templates/components` for reusable parts, allowing 
-efficient management of frontend sections.
-
-6. **Utility Functions**: Utility functions have been included to assist in various sections of
-code, including Jinja, such as date formatting, data transfer, and other operations that
-enhance the developer's experience.
+5. **Utility Functions**: Utility functions have been incorporated to assist in various sections 
+of the code, including Jinja templates, for tasks such as date formatting, data transfer, and 
+other operations that enhance the developer's experience.
 <br /><br /><br />
 
 
