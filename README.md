@@ -4,8 +4,12 @@ Flask Arch is a template for developing small to medium-sized Flask applications
 been meticulously crafted with attention to the smallest details, featuring a modular structure,
 well-organized configuration and loading, as well as native integration with some of the key
 technologies commonly used by Flask developers.
-<br /><br /><br />
 
+> [!NOTE]  
+> If you want to check a Flask application from a module following the same principles as this
+> repository, check out my project [PrintSync](https://github.com/davidsantana06/print-sync-server).
+
+<br /><br />
 
 
 ## :rocket: Features
