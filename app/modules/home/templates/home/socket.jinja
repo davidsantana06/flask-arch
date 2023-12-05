@@ -1,0 +1,47 @@
+{% extends layout('base') %}
+
+{% block title %}Socket IO{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('.static', filename='css/socket.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main class="container d-flex align-items-center justify-content-center py-min">
+        <div>
+            <div class="d-flex align-items-center">
+                <input id="message-input" class="form-control border-0 shadow-sm me-1" type="text">
+                <button class="btn border-0 rounded-0 text-white py-2" onclick="sendMessage()">Send</button>
+            </div>
+            <ul id="messages" class="list-group"></ul>
+        </div>
+    </main>
+{% endblock %}
+
+{% block script %}
+    <script>
+        const socket = io.connect(`http://${document.domain}:${location.port}`);
+        const ul = document.getElementById('messages');
+        const messageInput = document.getElementById('message-input');
+
+        socket.on('message', function (data) {
+            if (data !== '') {
+                const li = document.createElement('li');
+                li.classList.add('list-group-item', 'border-0', 'rounded-0', 'shadow-sm', 'mt-1');
+                li.textContent = data;
+                ul.appendChild(li);
+            }
+        });
+
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (message !== '') {
+                socket.emit('message', message);
+                messageInput.value = '';
+            }
+        }
+
+        const sendButton = document.getElementById('send-button');
+        sendButton.addEventListener('click', sendMessage);
+    </script>
+{% endblock %}

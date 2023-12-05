@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, render_template
 from typing import Dict
 from werkzeug import Response
 
-from app.lib.utils import normalize_template_name
+from app.lib.utils import m_include, m_layout, m_macro, normalize_template_name
 
 
 class Module(Blueprint):
@@ -69,7 +69,7 @@ class Module(Blueprint):
         '''
         return jsonify(*args, **kwargs)
 
-    def render_template(self, template_name: str, data: Dict[object, object]) -> str:
+    def render_template(self, template_name: str, data: Dict[object, object] = {}) -> str:
         '''
         Renders a template with additional data, including the current timestamp.
 
@@ -82,4 +82,11 @@ class Module(Blueprint):
         :return: The rendered template content.
         :rtype: str
         '''
-        return render_template(f'{self.name}/{normalize_template_name(template_name)}', dt_now=datetime.now(), **data)
+        context = {
+            'm_inc': lambda include_name: m_include(self.name, include_name),
+            'm_layout': lambda layout_name: m_layout(self.name, layout_name),
+            'm_macro': lambda macro_name: m_macro(self.name, macro_name),
+            'dt_now': datetime.now(),
+            **data
+        }
+        return render_template(f'{self.name}/{normalize_template_name(template_name)}', **context)
