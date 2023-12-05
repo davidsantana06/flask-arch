@@ -8,17 +8,17 @@ from os import (
 from typing import List
 
 from app.constants import DATABASE_FILE, DATABASE_FOLDER, ENV_FILE, OUTPUT_FOLDER, UPLOADS_FOLDER
+from app.lib.misc import create_folder
 
 
-def create_folders(folders: List[str]) -> None:
-    for folder in folders:
-        if not path.exists(folder):
-            mkdir(folder)
+def create_necessary_folders() -> None:
+    for folder in (DATABASE_FOLDER, OUTPUT_FOLDER, UPLOADS_FOLDER):
+        create_folder(folder)
 
 
 def configure_app_env(app: Flask) -> None:
-    create_folders([DATABASE_FOLDER, OUTPUT_FOLDER, UPLOADS_FOLDER])
     load_dotenv(ENV_FILE)
+    create_necessary_folders()
 
     app.config.update(
         SECRET_KEY=environ.get('SECRET_KEY'),
