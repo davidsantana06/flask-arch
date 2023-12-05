@@ -1,7 +1,6 @@
 from datetime import datetime
-from flask import Blueprint, jsonify, render_template
+from flask import Blueprint, render_template
 from typing import Dict
-from werkzeug import Response
 
 from app.lib.utils import m_include, m_layout, m_macro, normalize_template_name
 
@@ -55,19 +54,7 @@ class Module(Blueprint):
         
         :param kwargs: Additional keyword arguments accepted by Flask's Blueprint constructor.
         '''
-        Blueprint.__init__(self, name, import_name, static_folder, static_url_path, template_folder, url_prefix, **kwargs)
-
-    def jsonify(self, *args, **kwargs) -> Response:
-        '''
-        A wrapper around Flask's jsonify function.
-
-        :param args: Variable positional arguments to be passed to jsonify.
-        :param kwargs: Variable keyword arguments to be passed to jsonify.
-
-        :return: The JSON response.
-        :rtype: Response
-        '''
-        return jsonify(*args, **kwargs)
+        super().__init__(name, import_name, static_folder, static_url_path, template_folder, url_prefix, **kwargs)
 
     def render_template(self, template_name: str, data: Dict[object, object] = {}) -> str:
         '''
