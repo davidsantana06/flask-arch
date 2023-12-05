@@ -36,7 +36,7 @@ class Entity(Model):
         return cls.query.filter(and_(*filter_clauses)).first()
 
     @classmethod
-    def _find_all(cls, filter_clauses: List[ColumnElement[bool]] = [], order_clauses: List[UnaryExpression] = None) -> List['Entity']:
+    def _find_all(cls, filter_clauses: List[ColumnElement[bool]] = [], order_clauses: List[UnaryExpression] = []) -> List['Entity']:
         query = cls.query.filter(and_(*filter_clauses))
 
         if order_clauses:
@@ -70,11 +70,11 @@ class MainEntity(Entity):
 
     @classmethod
     def _find_first(cls, filter_clauses: List[ColumnElement[bool]]) -> 'MainEntity':
-        return cls._find_first([*filter_clauses, cls.status == 1])
+        return super()._find_first([*filter_clauses, cls.status == 1])
 
     @classmethod
-    def _find_all(cls, filter_clauses: List[ColumnElement[bool]] = [], order_clauses: List[UnaryExpression] = None) -> List['MainEntity']:
-        return cls._find_first([*filter_clauses, cls.status == 1], order_clauses)
+    def _find_all(cls, filter_clauses: List[ColumnElement[bool]] = [], order_clauses: List[UnaryExpression] = []) -> List['MainEntity']:
+        return super()._find_all([*filter_clauses, cls.status == 1], order_clauses)
 
 
 class AssociationEntity(Entity):
@@ -105,15 +105,15 @@ class User(database.Model, MainEntity, PopulateMixin, UserMixin):
 
     @classmethod
     def find_by_id(cls, id: int) -> 'User':
-        return cls._find_first([User.id == id])
+        return cls._find_first([cls.id == id])
 
     @classmethod
     def find_by_username(cls, username: str) -> 'User':
-        return cls._find_first([User.username == username])
+        return cls._find_first([cls.username == username])
 
     @classmethod
     def find_all_by_name(cls, name: str) -> List['User']:
-        return cls._find_all([User.name.icontains(name)])
+        return cls._find_all([cls.name.icontains(name)])
 
     def __init__(self, name: str, email: str, username: str, password: str) -> None:
         self.name = name
