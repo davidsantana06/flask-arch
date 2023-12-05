@@ -3,19 +3,20 @@
 @import url('./_variables.css');
 
 
+/* TEXT */
+
 * { font-family: 'Roboto', sans-serif; }
 
+h1, h2, h3, h4, h5, h6, p { margin-bottom: 0; }
 
-noscript {
-    background-color: rgba(0, 0, 0, .8);
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-
-    & .noscript-overlay { padding: 15px 20px; }
+kbd {
+    background-color: var(--bs-secondary-bg-subtle);
+    color: var(--bs-dark);
+    padding: 2px 5px 3px 5px;
 }
 
+
+/* PADDING/MARGIN */
 
 .pt-min { padding-top: 2.5rem; }
 
@@ -35,4 +36,24 @@ noscript {
         padding-left: 1.5rem !important;
         padding-right: 1.5rem !important;
     }
+}
+
+
+/* INCLUDES */
+
+noscript {
+    background-color: rgba(0, 0, 0, .8);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+
+    & .noscript-overlay { padding: 15px 20px; }
+}
+
+.alert {
+    bottom: 0;
+    position: fixed;
+    z-index: 9999;
+    font-size: smaller;
 }
