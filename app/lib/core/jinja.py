@@ -64,9 +64,9 @@ def macro(macro_name: str) -> str:
     return f'{_MACROS_FOLDER}/{_normalize_template_name(macro_name)}'
 
 
-def render_template(blueprint: Blueprint, template_name: str, data: Dict[object, object] = {}) -> str:
+def render_template(blueprint: Blueprint, template_name: str, data: Dict[str, object] = {}) -> str:
     '''
-    Renders a template with additional data, including the current timestamp.
+    Renders a template with additional data, including the current datetime.
 
     :param blueprint: The blueprint to which the template belongs.
     :type blueprint: Blueprint
@@ -84,7 +84,7 @@ def render_template(blueprint: Blueprint, template_name: str, data: Dict[object,
         '_inc': lambda include_name: f'{blueprint.name}/{include(include_name)}',
         '_layout': lambda layout_name: f'{blueprint.name}/{layout(layout_name)}',
         '_macro': lambda macro_name: f'{blueprint.name}/{macro(macro_name)}',
-        'dt_now': datetime.now(),
+        'current_datetime': datetime.now(),
         **data
     }
     return f_render_template(f'{blueprint.name}/{_normalize_template_name(template_name)}', **context)

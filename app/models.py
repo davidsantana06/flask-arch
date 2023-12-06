@@ -15,7 +15,7 @@ from .extensions import database
 
 # BASES/MIXINS #
 
-class Entity(Model):
+class _Entity(Model):
     @declared_attr
     def __tablename__(cls):
         cls_name_words = findall(r'[A-Z][a-z]*', cls.__name__)
@@ -23,7 +23,7 @@ class Entity(Model):
         return table_name
 
     @staticmethod
-    def save(entity: 'Entity') -> None:
+    def save(entity: '_Entity') -> None:
         try:
             database.session.add(entity)
             database.session.commit()
@@ -32,11 +32,11 @@ class Entity(Model):
             raise e
 
     @classmethod
-    def _find_first(cls, filter_clauses: List[ColumnElement[bool]]) -> 'Entity':
+    def _find_first(cls, filter_clauses: List[ColumnElement[bool]]) -> '_Entity':
         return cls.query.filter(and_(*filter_clauses)).first()
 
     @classmethod
-    def _find_all(cls, filter_clauses: List[ColumnElement[bool]] = [], order_clauses: List[UnaryExpression] = []) -> List['Entity']:
+    def _find_all(cls, filter_clauses: List[ColumnElement[bool]] = [], order_clauses: List[UnaryExpression] = []) -> List['_Entity']:
         query = cls.query.filter(and_(*filter_clauses))
 
         if order_clauses:
@@ -45,7 +45,7 @@ class Entity(Model):
         return query.all()
 
 
-class MainEntity(Entity):
+class _MainEntity(_Entity):
     @declared_attr
     def created_at(cls):
         return Column(DateTime, nullable=False, default=func.now())
@@ -59,7 +59,7 @@ class MainEntity(Entity):
         return Column(Integer, nullable=False, default=1)
 
     @staticmethod
-    def deactivate(entity: 'MainEntity') -> None:
+    def deactivate(entity: '_MainEntity') -> None:
         try:
             entity.status = 0
             database.session.add(entity)
@@ -69,19 +69,19 @@ class MainEntity(Entity):
             raise e
 
     @classmethod
-    def _find_first(cls, filter_clauses: List[ColumnElement[bool]]) -> 'MainEntity':
-        return super()._find_first([*filter_clauses, cls.status == 1])
+    def _find_first(cls, filter_clauses: List[ColumnElement[bool]]) -> '_MainEntity':
+        return super(cls, _Entity)._find_first([*filter_clauses, cls.status == 1])
 
     @classmethod
-    def _find_all(cls, filter_clauses: List[ColumnElement[bool]] = [], order_clauses: List[UnaryExpression] = []) -> List['MainEntity']:
-        return super()._find_all([*filter_clauses, cls.status == 1], order_clauses)
+    def _find_all(cls, filter_clauses: List[ColumnElement[bool]] = [], order_clauses: List[UnaryExpression] = []) -> List['_MainEntity']:
+        return super(cls, _Entity)._find_all([*filter_clauses, cls.status == 1], order_clauses)
 
 
-class AssociationEntity(Entity):
+class _AssociationEntity(_Entity):
     ...
 
 
-class PopulateMixin:
+class _PopulateMixin:
     def populate_form(self, form: FlaskForm) -> None:
         for field in form:
             if hasattr(self, field.name):
@@ -96,7 +96,7 @@ class PopulateMixin:
 
 # MODELS #
 
-class User(database.Model, MainEntity, PopulateMixin, UserMixin):
+class User(database.Model, _MainEntity, _PopulateMixin, UserMixin):
     id = Column(Integer, autoincrement=True, unique=True, nullable=False, primary_key=True)
     name = Column(String(50), nullable=False)
     email = Column(String(50), unique=True, nullable=False)

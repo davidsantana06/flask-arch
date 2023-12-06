@@ -1,9 +1,9 @@
 from datetime import date, datetime
 
 
-TIME_PATTERN = '%I:%M %p'
-DATE_PATTERN = '{} {}, {}'
-MONTH = [
+_TIME_PATTERN = '%I:%M %p'
+_DATE_PATTERN = '{} {}, {}'
+_MONTH = [
     'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
 ]
@@ -23,9 +23,9 @@ def format_dt(dt: datetime, reference_date: date) -> str:
     :rtype: str
     '''
     if dt.date() == reference_date:
-        formatted_dt = dt.strftime(TIME_PATTERN)
+        formatted_dt = dt.strftime(_TIME_PATTERN)
     else:
         month_idx = dt.month - 1
-        formatted_dt = DATE_PATTERN.format(MONTH[month_idx], dt.day, dt.year)
+        formatted_dt = _DATE_PATTERN.format(_MONTH[month_idx], dt.day, dt.year)
 
     return formatted_dt

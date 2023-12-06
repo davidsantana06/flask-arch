@@ -3,6 +3,6 @@ from app.extensions import socket_io
 
 
 @socket_io.on('message')
-def handle_message(message):
+def handle_message(message: str):
     print('Received message:', message)
     emit('message', message)
