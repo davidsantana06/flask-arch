@@ -15,16 +15,10 @@
                 <form action="{{ url_for('.login_post') }}" method="POST">
                     {{ form.csrf_token() }}
                     <div class="mb-4">
-                        {{ form.username(
-                            class='form-control py-2 rounded-0 border-0 border-bottom shadow-none', 
-                            placeholder='Username'
-                        ) }}
+                        {{ form.email(class='form-control py-2 rounded-0 border-0 border-bottom shadow-none') }}
                     </div>
                     <div class="mb-4">
-                        {{ form.password(
-                            class='form-control py-2 rounded-0 border-0 border-bottom shadow-none', 
-                            placeholder='Password'
-                        ) }}
+                        {{ form.password(class='form-control py-2 rounded-0 border-0 border-bottom shadow-none')}}
                         <div class="form-text">We'll never share your password with anyone else.</div>
                     </div>
                     {{ form.submit(class='btn fw-semibold text-white text-uppercase py-2 border-0 w-100') }}

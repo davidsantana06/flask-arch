@@ -14,7 +14,7 @@ def configure_extensions(app: Flask) -> None:
 
     login_manager.init_app(app)
     login_manager.user_loader(lambda user_id: User.find_by_id(int(user_id)))
-    login_manager.login_message = 'Please log in to access this page'
+    login_manager.login_message = 'Please log in to access this page.'
     login_manager.login_message_category = 'info'
     login_manager.login_view = 'auth.login'
 
