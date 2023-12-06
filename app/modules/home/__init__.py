@@ -1,6 +1,6 @@
-from app.lib.core import Module
+from flask import Blueprint
 
-home = Module('home', __name__, static_url_path=f'/{__name__}')
+home = Blueprint('home', __name__, static_folder='static', static_url_path=f'/{__name__}', template_folder='templates')
 
 from .events import *
 from .views import *

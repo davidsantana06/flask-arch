@@ -1,5 +1,5 @@
-from app.lib.core import Module
+from flask import Blueprint
 
-auth = Module('auth', __name__, static_url_path=f'/{__name__}')
+auth = Blueprint('auth', __name__, static_folder='static', static_url_path=f'/{__name__}', template_folder='templates')
 
 from .views import *
