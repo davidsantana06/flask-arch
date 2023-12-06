@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from re import findall
 from sqlalchemy import (
     Column, ColumnElement, DateTime, Integer, String, UnaryExpression,
-    and_
+    and_, or_
 )
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy.sql import func
@@ -100,7 +100,6 @@ class User(database.Model, _MainEntity, _PopulateMixin, UserMixin):
     id = Column(Integer, autoincrement=True, unique=True, nullable=False, primary_key=True)
     name = Column(String(50), nullable=False)
     email = Column(String(50), unique=True, nullable=False)
-    username = Column(String(30), unique=True, nullable=False)
     password = Column(String(60), nullable=False)
 
     @classmethod
@@ -108,8 +107,8 @@ class User(database.Model, _MainEntity, _PopulateMixin, UserMixin):
         return cls._find_first([cls.id == id])
 
     @classmethod
-    def find_by_username(cls, username: str) -> 'User':
-        return cls._find_first([cls.username == username])
+    def find_by_email(cls, email: str) -> 'User':
+        return cls._find_first([cls.email == email])
 
     @classmethod
     def find_all_by_name(cls, name: str) -> List['User']:
