@@ -1,8 +1,9 @@
-flask==2.3.3
 flask_bcrypt==1.0.1
-flask_sqlalchemy==3.0.5
-mysql-connector-python==8.0.28
 flask_login==0.6.2
 flask_socketio==5.3.6
+flask_sqlalchemy==3.0.5
 flask_wtf==1.1.1
-python_dotenv
+flask==2.3.3
+mysql-connector-python==8.0.28
+python_dotenv==1.0.0
+werkzeug==2.3.7

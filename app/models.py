@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from re import findall
 from sqlalchemy import (
     Column, ColumnElement, DateTime, Integer, String, UnaryExpression,
-    and_, or_
+    and_
 )
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy.sql import func
@@ -59,7 +59,7 @@ class _MainEntity(_Entity):
         return Column(Integer, nullable=False, default=1)
 
     @staticmethod
-    def deactivate(entity: '_MainEntity') -> None:
+    def delete(entity: '_MainEntity') -> None:
         try:
             entity.status = 0
             database.session.add(entity)
@@ -70,11 +70,11 @@ class _MainEntity(_Entity):
 
     @classmethod
     def _find_first(cls, filter_clauses: List[ColumnElement[bool]]) -> '_MainEntity':
-        return super(cls, _Entity)._find_first([*filter_clauses, cls.status == 1])
+        return super()._find_first([*filter_clauses, cls.status == 1])
 
     @classmethod
     def _find_all(cls, filter_clauses: List[ColumnElement[bool]] = [], order_clauses: List[UnaryExpression] = []) -> List['_MainEntity']:
-        return super(cls, _Entity)._find_all([*filter_clauses, cls.status == 1], order_clauses)
+        return super()._find_all([*filter_clauses, cls.status == 1], order_clauses)
 
 
 class _AssociationEntity(_Entity):
@@ -102,6 +102,14 @@ class User(database.Model, _MainEntity, _PopulateMixin, UserMixin):
     email = Column(String(50), unique=True, nullable=False)
     password = Column(String(60), nullable=False)
 
+    @staticmethod
+    def save(user: 'User') -> None:
+        _MainEntity.save(user)
+
+    @staticmethod
+    def delete(user: 'User') -> None:
+        _MainEntity.delete(user)
+
     @classmethod
     def find_by_id(cls, id: int) -> 'User':
         return cls._find_first([cls.id == id])
@@ -114,8 +122,7 @@ class User(database.Model, _MainEntity, _PopulateMixin, UserMixin):
     def find_all_by_name(cls, name: str) -> List['User']:
         return cls._find_all([cls.name.icontains(name)])
 
-    def __init__(self, name: str, email: str, username: str, password: str) -> None:
+    def __init__(self, name: str, email: str, password: str) -> None:
         self.name = name
         self.email = email
-        self.username = username
         self.password = password
