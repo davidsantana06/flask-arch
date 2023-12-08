@@ -50,7 +50,7 @@ noscript {
     & .noscript-overlay { padding: 15px 20px; }
 }
 
-.alert {
+.flash {
     top: 10px;
     position: fixed;
     font-size: small;
@@ -61,5 +61,5 @@ noscript {
 }
 
 @media (max-width: 320px) {
-    .alert { width: 85%; }
+    .flash { width: 85%; }
 }
