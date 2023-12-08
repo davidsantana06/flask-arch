@@ -1,10 +1,7 @@
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         {% for category, message in messages %}
-            <div class="flash alert {{ 'alert-' ~ category }} alert-dismissible fade show border-0 rounded-3 shadow-sm" role="alert">
-                <span class="normal-font-size">{{ message }}</span>
-                <button class="btn-close shadow-none" type="button" data-bs-dismiss="alert" aria-label="Fechar"></button>
-            </div>
+            <div class="flash" data-message="{{ message }}" data-category="{{ category }}"></div>
         {% endfor %}
     {% endif %}
 {% endwith %}

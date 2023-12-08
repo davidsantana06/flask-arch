@@ -51,15 +51,5 @@ noscript {
 }
 
 .flash {
-    top: 10px;
-    position: fixed;
-    font-size: small;
-    width: max-content;
-    left: 50%;
-    transform: translate(-50%);
-    z-index: 9999;
-}
-
-@media (max-width: 320px) {
-    .flash { width: 85%; }
+    display: none;
 }
