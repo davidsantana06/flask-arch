@@ -6,6 +6,7 @@
         <title>{% block title required %}{% endblock %} · Flask Arch</title>
         <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         {% block style %}{% endblock %}
@@ -16,6 +17,7 @@
         {% block content required %}{% endblock %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
         <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jsonify.js') }}"></script>
         {% block script %}{% endblock %}
     </body>
 </html>

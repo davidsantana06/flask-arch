@@ -7,12 +7,12 @@
 {% endblock %}
 
 {% block content %}
-    {% include inc('alert') %}
+    {% include inc('flash') %}
     <main class="container d-flex py-min">
         <div class="d-flex align-items-center justify-content-center w-100">
             <div id="form-content" class="d-flex align-items-center justify-content-center bg-white shadow-sm p-5 px-min">
                 <img class="me-5" src="{{ url_for('static', filename='images/fda.png') }}">
-                <form action="{{ url_for('.login_post') }}" method="POST">
+                <form data-action="{{ url_for('.login_post') }}" data-method="POST">
                     {{ form.csrf_token() }}
                     <div class="mb-4">
                         {{ form.email(class='form-control py-2 rounded-0 border-0 border-bottom shadow-none') }}
@@ -26,4 +26,8 @@
             </div>
         </div>
     </main>
+{% endblock %}
+
+{% block script %}
+    <script>jsonifyForm(document.querySelector('form'));</script>
 {% endblock %}
