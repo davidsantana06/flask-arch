@@ -3,7 +3,7 @@
 {% block title %}Login{% endblock %}
 
 {% block style %}
-    <link rel="stylesheet" href="{{ url_for('.static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ _css('login') }}">
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
     <main class="container d-flex py-min">
         <div class="d-flex align-items-center justify-content-center w-100">
             <div id="form-content" class="d-flex align-items-center justify-content-center bg-white shadow-sm p-5 px-min">
-                <img class="me-5" src="{{ url_for('static', filename='images/fda.png') }}">
+                <img class="me-5" src="{{ img('fda.png') }}">
                 <form data-action="{{ url_for('.login_post') }}" data-method="POST">
                     {{ form.csrf_token() }}
                     <div class="mb-4">

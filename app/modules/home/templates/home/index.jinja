@@ -4,8 +4,8 @@
 {% block title %}Home{% endblock %}
 
 {% block style %}
-    <link rel="stylesheet" href="{{ url_for('.static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('.static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ _css('style') }}">
+    <link rel="stylesheet" href="{{ _css('index') }}">
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
     <main class="container d-flex align-items-center py-min">
         <div class="w-100">
             <div id="fda" class="d-flex align-items-center justify-content-center mb-3">
-                <img class="me-3" src="{{ url_for('static', filename='images/fda.png') }}">
+                <img class="me-3" src="{{ img('fda.png') }}">
                 <div>
                     <h1 class="fw-semibold">Flask Arch</h1>
                     <p>Modular Architecture</p>
