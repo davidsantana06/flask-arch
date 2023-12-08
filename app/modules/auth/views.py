@@ -27,17 +27,18 @@ def login():
     return render_template(auth, 'login', {'form': LoginForm()})
 
 
+'''
 @auth.post('/login')
 def login_post():
     flash('You have been logged in.', 'success')
     return redirect(url_for('home.index'))
-
-
 '''
+
+
 @auth.post('/login')
 def login_post():
-    response = jsonify_message('Invalid e-mail or password!', 'danger')
     form = LoginForm(request.form)
+    response = jsonify_message('Invalid e-mail or password!', 'danger')
 
     if form.validate_on_submit():
         email = form.email.data
@@ -51,10 +52,10 @@ def login_post():
             if (next is None) or (not next.startswith('/')):
                 next = url_for('home.index')
 
+            flash('You have been logged in.', 'success')
             response = jsonify_redirect(next)
 
     return response
-'''
 
 
 @auth.get('/logout')
@@ -78,15 +79,14 @@ def register_post():
 
     if form.validate_on_submit():
         email = form.email.data
-        username = form.username.data
-        user = User.find_by_email_or_username(email, username)
+        user = User.find_by_email(email)
 
         if not user is None:
             response = jsonify_message('The email or username is already taken.', 'warning')
         else:
             name = form.name.data
             password = generate_password_hash(form.password.data)
-            user = User(name, email, username, password)
+            user = User(name, email, password)
             User.save(user)
 
             flash('Your registration was successful. To continue, please log in.', 'success')
