@@ -37,7 +37,7 @@ function showMessageResponse(message, category, animationIn = "animate__bounceIn
         childDiv.style.width = calculateWidth(window.innerWidth);
         window.addEventListener("resize", () => { childDiv.style.width = calculateWidth(window.innerWidth); });
         childDiv.innerHTML = `
-            <svg class="me-2" width="14px" height="14px" viewBox="0 0 16 16" style="min-width: 14px; min-height=14px;">
+            <svg class="me-2" width="14px" height="14px" viewBox="0 0 16 16" style="min-width: 14px; min-height: 14px;">
                 <path d="${symbolPath(category)}" />
             </svg>
             ${message}
