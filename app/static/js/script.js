@@ -118,6 +118,3 @@ function handleFlashMessage() {
         flashMessage.remove();
     }
 }
-
-
-handleFlashMessage();

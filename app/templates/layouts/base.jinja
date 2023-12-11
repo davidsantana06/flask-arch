@@ -15,9 +15,11 @@
     <body class="bg-light">
         {% include inc('noscript') %}
         {% block content required %}{% endblock %}
+        {% include inc('flash') %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
         <script src="{{ js('bootstrap') }}"></script>
         <script src="{{ js('script') }}"></script>
+        <script>handleFlashMessage();</script>
         {% block script %}{% endblock %}
     </body>
 </html>
