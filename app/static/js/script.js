@@ -24,17 +24,20 @@ function showMessageResponse(message, category, animationIn = "animate__bounceIn
     };
 
     const createChildDiv = () => {
-        const calculateWidth = (windowWidth) => {
-            return windowWidth <= 400 ? `${windowWidth - 40}px` : "max-content";
-        }
+        const calculateWidth = (windowWidth) => { return windowWidth <= 400 ? `${windowWidth - 40}px` : "max-content"; }
 
         const childDiv = document.createElement("div");
-        childDiv.classList.add("message-response", "alert", `alert-${category}`, "d-flex", "align-items-center", "justify-content-center", "border-0", "px-4", "rounded-pill", "shadow-sm", "animate__animated", animationIn);
+        childDiv.classList.add(
+            "message-response", "alert", `alert-${category}`, 
+            "d-flex", "align-items-center", "justify-content-center", 
+            "border-0", "px-4", "rounded-pill", "shadow-sm", 
+            "animate__animated", animationIn
+        );
         childDiv.setAttribute("role", "alert");
         childDiv.style.width = calculateWidth(window.innerWidth);
         window.addEventListener("resize", () => { childDiv.style.width = calculateWidth(window.innerWidth); });
         childDiv.innerHTML = `
-            <svg class="me-2" width="14px" height="14px" viewBox="0 0 16 16">
+            <svg class="me-2" width="14px" height="14px" viewBox="0 0 16 16" style="min-width: 14px; min-height=14px;">
                 <path d="${symbolPath(category)}" />
             </svg>
             ${message}
@@ -63,7 +66,7 @@ function showMessageResponse(message, category, animationIn = "animate__bounceIn
 
 
 function handleJsonResponse(data) {
-    if (data.redirect) {
+    if (data.redirect) { 
         window.location.replace(data.redirect);
     } else {
         showMessageResponse(data.message, data.category);
