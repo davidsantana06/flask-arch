@@ -11,7 +11,7 @@ function showMessageResponse(message, category, animationIn = "animate__bounceIn
             "warning": infoFill,
             "info": infoFill
         }[category];
-    };
+    }
 
     const createExternalDiv = () => {
         const externalDiv = document.createElement("div");
@@ -21,7 +21,7 @@ function showMessageResponse(message, category, animationIn = "animate__bounceIn
         externalDiv.style.left = "50%";
         externalDiv.style.transform = "translate(-50%)";
         return externalDiv;
-    };
+    }
 
     const createChildDiv = () => {
         const calculateWidth = (windowWidth) => { return windowWidth <= 400 ? `${windowWidth - 40}px` : "max-content"; }
@@ -30,7 +30,7 @@ function showMessageResponse(message, category, animationIn = "animate__bounceIn
         childDiv.classList.add(
             "message-response", "alert", `alert-${category}`, 
             "d-flex", "align-items-center", "justify-content-center", 
-            "border-0", "px-4", "rounded-pill", "shadow-sm", 
+            "border-0", "px-4", "rounded-2", "shadow-sm", 
             "animate__animated", animationIn
         );
         childDiv.setAttribute("role", "alert");
@@ -43,24 +43,24 @@ function showMessageResponse(message, category, animationIn = "animate__bounceIn
             ${message}
         `;
         return childDiv;
-    };
+    }
 
     const removePreviousResponse = () => {
         const previousResponse = document.querySelector(".message-response");
         if (previousResponse) { previousResponse.remove(); }
-    };
+    }
 
     const removeCurrentResponse = (externalDiv, childDiv) => {
         childDiv.classList.remove(animationIn);
         childDiv.classList.add(animationOut);
         setTimeout(() => externalDiv.remove(), 1000);
-    };
+    }
 
     removePreviousResponse();
     const externalDiv = createExternalDiv();
     const childDiv = createChildDiv();
     externalDiv.appendChild(childDiv);
-    setTimeout(() => removeCurrentResponse(externalDiv, childDiv), 7 * 1000);
+    setTimeout(() => removeCurrentResponse(externalDiv, childDiv), 3 * 1000);
     document.querySelector("script").insertAdjacentElement("beforebegin", externalDiv);
 }
 
